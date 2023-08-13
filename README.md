@@ -1,3 +1,3 @@
-# My personal notes on the Forth language
+# My personal notes on Brad Rodriguez's Moving Forth
 
 Website: <https://efurlanm.github.io/movingforth/>

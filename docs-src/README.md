@@ -80,6 +80,6 @@ Source 2 : <http://www.forth.org/fd/FDcover.html> (scanned PDF files)
 <table>
     <tr>
         <td><img src="img/construction.gif"></td>
-        <td>This repository is permanently under construction, so its content changes constantly.</td>
+        <td>This work is permanently under construction, so its content changes constantly.</td>
     </tr>
 </table>

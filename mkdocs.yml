@@ -1,7 +1,7 @@
 site_name: MovingForth
 site_author: Eduardo Furlan
 copyright: CC BY 4.0 License
-repo_name: efurlanm/movingforth
+repo_name: movingforth
 repo_url: http://github.com/efurlanm/movingforth
 docs_dir: docs-src
 site_dir: docs
@@ -9,14 +9,15 @@ site_dir: docs
 #use_directory_urls: false
 theme:
     name: material
-    #font: false
     palette:
         primary: orange
 #        accent: orange
     features:
         - header.autohide
+plugins:
+    - offline  # needs "- privacy" too
+    - privacy
+    - search
 extra_css:
     - css/extra.css
-#plugins:
-    #- offline
 

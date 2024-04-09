@@ -71,10 +71,3 @@ Source 2 : <http://www.forth.org/fd/FDcover.html> (scanned PDF files)
 * FD \#XIV:5 "Principles of Metacompilation 3" & "Life in the FastForth Lane" (22 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_5) [[2]](http://www.forth.org/fd/FD-V14N5.pdf)
 * FD \#XIV:5 "Principles of Metacompilation 3" & "Optimizing in a BSR/JSR Threaded Forth" (22 MB PDF file) [[1]](http://archive.org/details/Forth_Dimension_Volume_14_Number_6) [[2]](http://www.forth.org/fd/FD-V14N6.pdf)
 
-<br>
-<table>
-    <tr>
-        <td><img src="img/construction.gif"></td>
-        <td>This work is permanently under construction, so its content changes constantly.</td>
-    </tr>
-</table>

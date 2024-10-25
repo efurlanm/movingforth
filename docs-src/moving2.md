@@ -515,4 +515,4 @@ Subsequent articles will look at:
 
 \[SEY89\] Seywerd, H., Elehew, W. R., and Caven, P., <u>LOVE-83Forth for the IBM PC</u>, version 1.20 (1989). A shareware Forth using a five-segment model. Contact Seywerd Associates, 265 Scarboro Cres., Scarborough, Ontario M1M 2J7 Canada.
 
-*Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group FTP server, <ftp://ftp.forth.org/pub/Forth>.*
+*Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group FTP server, `ftp://ftp.forth.org/pub/Forth`.*

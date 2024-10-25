@@ -5,13 +5,11 @@ by Brad Rodriguez
 
 This article first appeared in The Computer Journal #69 (September/October 1994).
 
-
 ## ERRATA
 
 There are two goofs in the [CAMEL80.AZM](camel80.md) file I presented in TCJ\#67. The minor goof is that the name length specified in the HEAD macro for the Forth word **\>** was incorrectly typed as 2 instead of 1.
 
 The major goof results from a subtlety of CP/M console I/O. KEY must not echo the typed character, and so used BDOS function 6. KEY? used BDOS function 11 to test non-destructively for the presence of a keypress. Unfortunately, BDOS function 6 does not "clear" the keypress detected by function 11\! I have now rewritten KEY? to use BDOS function 6 (see [Listing 1](camel80.md)). Since this is a "destructive" test, I had to add logic to save the "consumed" keypress and return it when KEY is next used. This new logic can be used whenever your hardware (or operating system) provides only a destructive test-for-keypress.
-
 
 ## HIGH LEVEL DEFINITIONS
 
@@ -19,12 +17,11 @@ In the last installment I did not expound greatly on the source code. Each Forth
 
 In this installment I have no such luxury: I will present the high level definitions which embody the elegant (and tortuous) logic of the Forth language. Entire books have been written \[1,2,3\] describing Forth kernels, and if you want complete mastery I highly recommend you buy one of them. For TCJ I'll limit myself to some of the key words of the compiler and interpreter, given in [Listing 2](camel80h.md).
 
-
 ## TEXT INTERPRETER OPERATION
 
 The text or "outer" interpreter is the Forth code which accepts input from the keyboard and performs the desired Forth operations. (This is distinct from the address or "inner" interpreter, NEXT, which executes compiled threaded code) The best way to understand it is to work through the startup of the Forth system.
 
-1. The CP/M entry point (see [listing](camel80.md) in previous installment) determines the top of available memory, set the stack pointers (PSP,RSP) and user pointer (UP), establishing the memory map shown in [Figure 1](#figure-1.-z80-cpm-camelforth-memory-map). It then sets the "inner" interpreter pointer (IP) to execute the Forth word **COLD**.
+1. The CP/M entry point (see [listing](camel80.md) in previous installment) determines the top of available memory, set the stack pointers (PSP,RSP) and user pointer (UP), establishing the memory map shown in [Figure 1](#FIG01). It then sets the "inner" interpreter pointer (IP) to execute the Forth word **COLD**.
 
 2. **COLD** initializes the user variables from a startup table, and then does **ABORT**. (**COLD** will also attempt to execute a Forth command from the CP/M command line.)
 
@@ -33,7 +30,6 @@ The text or "outer" interpreter is the Forth code which accepts input from the k
 4. **QUIT** resets the return stack pointer, loop stack pointer, and interpret state, and then begins to interpret Forth commands. (The name is apt because **QUIT** can be used to abort an application and get back to the "top level" of Forth. Unlike **ABORT**, **QUIT** will leave the parameter stack contents alone) **QUIT** is an infinite loop which will **ACCEPT** a line from the keyboard, and then **INTERPRET** it as Forth commands. When not compiling, **QUIT** will prompt "ok" after each line.
 
 5. **INTERPRET** is an almost verbatim translation of the algorithm given in section 3.4 of the ANS Forth document. It parses one space-delimited string from the input, and tries to **FIND** the Forth word of that name. If the word is found, it will be either executed (if it is an IMMEDIATE word, or if in the "interpret" state, STATE=0) or compiled into the dictionary (if in the "compile" state, STATE\<\>0). If not found, Forth attempts to convert the string as a number. If successful, **LITERAL** will either place it on the parameter stack (if in "interpret" state) or compile it as an in-line literal value (if in "compile" state). If not a Forth word and not a valid number, the string is typed, an error message is displayed, and the interpreter **ABORT**s. This process is repeated, string by string, until the end of the input line is reached.
-
 
 ## THE FORTH DICTIONARY
 
@@ -49,8 +45,7 @@ You can even have unnamed ("headless") fragments of Forth code, if you *know* yo
 
 The design decisions could fill another article. Suffice it to say that CamelForth uses the simplest scheme: a single linked list, with the header located just before the executable code. No vocabularies... although I may add them in a future issue of TCJ.
 
-
-## HEADER STRUCTURE ([Figure 2](#figure-2.-header-structures))
+## HEADER STRUCTURE
 
 Still more design decisions: what data should be present in the header, and how should it be stored?
 
@@ -60,12 +55,11 @@ The "precedence bit" is a flag which indicates if this word has IMMEDIATE status
 
 If the names are kept in a linked list, there must be a link. Usually the latest word is at the head of the linked list, and the link points to a previous word. This enforces the ANSI (and traditional) requirement for redefined words. Charles Curley \[7\] has studied the placement of the link field, and found that the compiler can be made significantly faster if the link field comes *before* the name (rather than after, as was done in Fig-Forth).
 
-[Figure 2](#figure-2.-header-structures) shows the structure of the CamelForth word header, and the Fig-Forth, F83, and Pygmy Forth headers for comparison. The "view" vield of F83 and Pygmy is an example of other useful information which can be stored in the Forth word header.
+[Figure 2](#FIG02) shows the structure of the CamelForth word header, and the Fig-Forth, F83, and Pygmy Forth headers for comparison. The "view" vield of F83 and Pygmy is an example of other useful information which can be stored in the Forth word header.
 
 Remember: it's important to distinguish the header from the "body" (executable part) of the word. They need not be stored together. The header is only used during compilation and interpretation, and a "purely executable" Forth application could dispense with headers entirely. However, headers must be present -- at least for the ANSI word set -- for it to be a legal ANS Forth System.
 
 When "compiling" a Forth system from assembler source code, you can define macros to build this header (see HEAD and IMMED in CAMEL80.AZM). In the Forth environment the header, *and the Code Field*, is constructed by the word **CREATE**.
-
 
 ## COMPILER OPERATION
 
@@ -74,7 +68,6 @@ We now know enough to understand the Forth compiler. The word **:** starts a new
 Also, **:** will **HIDE** the new word, and **;** will **REVEAL** it (by setting and clearing the "smudge" bit in the name). This is to allow a Forth word to be redefined in terms of its "prior self". To force a recursive call to the word being defined, use **RECURSE**.
 
 Thus we see that there is no distinct Forth "compiler", in the same sense that we would speak of a C or Pascal compiler. The Forth compiler is embodied in the actions of various Forth words. This makes it easy for you to change or extend the compiler, but makes it difficult to create a Forth application *without* a built-in compiler\!
-
 
 ## THE DEPENDENCY WORD SET
 
@@ -86,16 +79,14 @@ Differences in cell size and word alignment are managed by the ANS Forth words *
 
 The words **COMPILE, \!CF ,CF \!COLON** and **,EXIT** hide peculiarities of the threading model, such as a) how are the threads represented, and b) how is the Code Field implemented? The value of these words becomes evident when you look at the differences between the direct-threaded Z80 and the subroutine-threaded 8051:
 
-
     word     compiles on Z80   compiles on 8051
     -------- ----------------- ---------------------------
-
+    
     COMPILE, address           LCALL address
     !CF      CALL address      LCALL address
     ,CF      !CF & allot       3 bytes !CF & allot 3 bytes
     !COLON   CALL docolon      nothing!
     ,EXIT    address of EXIT   RET
-
 
 (**\!CF** and **,CF** are different for indirect-threaded Forths.)
 
@@ -103,13 +94,11 @@ In similar fashion, the words **,BRANCH ,DEST** and **\!DEST** hide the implemen
 
 So far I have *not* been successful factoring the differences in header structure into a similar set of words. The words **FIND** and **CREATE** are so intimately involved with the header contents that I haven't yet found suitable subfactors. I have made a start, with the words **NFA\>LFA NFA\>CFA IMMED? HIDE REVEAL** and the ANS Forth words **\>BODY IMMEDIATE**. I'll continue to work on this. Fortunately, it is practical for the time being to use the identical header structure on all CamelForth implementations (since they're all byte-addressed 16-bit Forths).
 
-
 ## NEXT TIME...
 
 I will probably present the 8051 kernel, and talk about how the Forth compiler and interpreter are modified for Harvard architectures (computers that have logically distinct memories for Code and Data, like the 8051). For the 8051 I will print the files CAMEL51 and CAMEL51D, but probably only excerpts from CAMEL51H, since (except for formatting of the assembler file) the high-level code shouldn't be different from what I've presented this issue...and Bill needs the space for other articles\! Don't worry, the full code will be uploaded to GEnie.
 
 *However,* I may succumb to demands of Scroungemaster II builders, and publish the 6809 CamelForth configured for the Scroungemaster II board. Whichever I do next, I'll do the other just one installment later.
-
 
 ## REFERENCES
 
@@ -131,8 +120,7 @@ The source code for Z80 CamelForth is *now* available on GEnie as CAMEL80.ARC in
 
 *Source code for Z80 CamelForth is available on this site at <http://www.camelforth.com/public_ftp/cam80-12.zip>.*
 
-<span id="FIGURE1"></span>
-
+<a name="FIG01"></a>
 
 ## FIGURE 1. Z80 CP/M CAMELFORTH MEMORY MAP
 
@@ -177,8 +165,8 @@ assuming CP/M BDOS starts at ED00 hex.
 
 \* used during compilation of DO..LOOPs.
 
-<span id="FIGURE2"></span>
 
+<a name="FIG02"></a>
 
 ## FIGURE 2. HEADER STRUCTURES
 

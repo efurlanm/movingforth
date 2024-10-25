@@ -5,9 +5,13 @@ repo_name: movingforth
 repo_url: http://github.com/efurlanm/movingforth
 docs_dir: docs-src
 site_dir: docs
-use_directory_urls: false  # need for inline html and dir navigation
+# inline html and offline dir navigation
+use_directory_urls: false
+site_url: ""
+## do not use "search"
 theme:
     name: material
+    font: false
     palette:
 # https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
         primary: orange
@@ -16,4 +20,8 @@ theme:
         - header.autohide
 extra_css:
     - css/extra.css
-
+plugins:
+    - offline
+exclude_docs: |
+    .ipynb_checkpoints
+    .git

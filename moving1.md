@@ -376,3 +376,4 @@ On the 8086 you could conceivably use a segment register to specify the base add
 
 *Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group <del>FTP</del> server, <del>ftp://ftp.forth.org/pub/Forth</del> http://www.forth.org/*
 
+<br><sub>Last edited: 2024-12-01 14:12:43</sub>

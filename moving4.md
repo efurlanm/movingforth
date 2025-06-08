@@ -101,3 +101,5 @@ On a 68000 or SPARC, this might produce quite good code. On a Z80 or 8051, quite
 \[TIN91\] Ting, C.H., "How Metacompilation Stops the Growth Rate of Forth Programmers," Forth Dimensions XIII:1 (May/Jun 1991), p.17.
 
 *Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group FTP server, `ftp://ftp.forth.org/pub/Forth`. Also, several new Forths-in-C have been published since this article was first written. Consult the "systems" FAQ at `ftp://ftp.forth.org/pub/Forth/FAQ` for a current list.*
+
+<br><sub>Last edited: 2024-04-20 21:27:48</sub>

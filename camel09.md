@@ -853,3 +853,5 @@ META ALSO FORTH TLATEST @ T, PREVIOUS TARGET    \ LATEST
 \ order to set the initial LATEST as shown above.  If this is
 \ not the last word, be sure to patch the LATEST value above.
 ```
+
+<br><sub>Last edited: 2022-02-04 22:25:31</sub>

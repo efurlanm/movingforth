@@ -611,3 +611,5 @@ In the next installment I'll discuss the merits of assemblers vs. metacompilers,
 \[LAX84\] Laxen, H. and Perry, M., <u>F83 for the IBM PC</u>, version 2.1.0 (1984). Distributed by the authors, available from the Forth Interest Group or GEnie.
 
 *Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group FTP server, `ftp://ftp.forth.org/pub/Forth`.*
+
+<br><sub>Last edited: 2024-04-20 21:31:03</sub>

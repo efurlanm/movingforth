@@ -181,3 +181,5 @@ In the next installment I shall modify the *8051* source code to work on the 680
 \[CUR93\] Curley, Charles, <u>Optimization Considerations</u>, Forth Dimensions XIV:5 (Jan/Feb 1993), pp. 6-12.
 
 *Source code for 8051 CamelForth is available on this site at [http://www.camelforth.com/public\_ftp/cam51-15.zip](http://www.camelforth.com/public_ftp/cam80-12.zip).*
+
+<br><sub>Last edited: 2023-08-13 17:21:47</sub>

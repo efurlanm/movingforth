@@ -204,3 +204,5 @@ assuming CP/M BDOS starts at ED00 hex.
 **1** - in Fig-Forth and F83, the length byte and the last character of the name are flagged with a 1 in the most significant bit (bit 7).
 
 **View** - in Pygmy Forth and F83, contains the block number of the source code for this word.
+
+<br><sub>Last edited: 2024-10-25 16:01:07</sub>

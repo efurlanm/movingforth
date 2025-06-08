@@ -1028,3 +1028,5 @@ lastword EQU link   ; nfa of last word in dict.
 enddict EQU $       ; user's code starts here
         END
 ```
+
+<br><sub>Last edited: 2022-02-04 22:24:44</sub>

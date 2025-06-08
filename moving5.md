@@ -73,3 +73,5 @@ ANSI Forth defines a number of useful abbreviations for stack arguments, such as
 \[4\] A51, PseudoCorp's freeware Level 1 cross-assembler for the 8051, is available from the Realtime and Control Forth Board, (303) 278-0364, or on the GEnie Forth Roundtable as file A51.ZIP. PseudoCorp's commercial products are advertised here in TCJ.
 
 *Source code for Z80 CamelForth is available on this site at <http://www.camelforth.com/public_ftp/cam80-12.zip>.*
+
+<br><sub>Last edited: 2023-08-13 17:21:13</sub>

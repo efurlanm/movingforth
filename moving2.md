@@ -516,3 +516,5 @@ Subsequent articles will look at:
 [SEY89] Seywerd, H., Elehew, W. R., and Caven, P., <u>LOVE-83Forth for the IBM PC</u>, version 1.20 (1989). A shareware Forth using a five-segment model. Contact Seywerd Associates, 265 Scarboro Cres., Scarborough, Ontario M1M 2J7 Canada. [[1](http://annex.retroarchive.org/cdrom/nightowl-006/016A/LOVE4TH/index.html)] [[2](https://archive.org/details/Night_Owls_Shareware_-_PDSI-006-1_-_Night_Owl_Corp_1992)]
 
 *Author's note for web publication: the files formerly available on the GEnie online service are now available from the Forth Interest Group FTP server, `ftp://ftp.forth.org/pub/Forth`.*
+
+<br><sub>Last edited: 2024-12-01 14:44:05</sub>
